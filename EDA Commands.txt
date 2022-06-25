@@ -1,0 +1,398 @@
+---
+title: "EDA_LA-1"
+author: "RISHIK and HARSHITA"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+``
+```{r}
+data<- read.csv(file.choose())
+```
+```{r}
+data
+```
+```{r}
+search()
+```
+```{r}
+head(data)
+```
+```{r}
+tail(data)
+```
+```{r}
+head(data,10)
+```
+```{r}
+tail(data,10)
+```
+```{r}
+str(data)
+```
+```{r}
+names(data)
+```
+```{r}
+ls()
+```
+```{r}
+colnames(data)
+```
+```{r}
+rownames(data)
+```
+```{r}
+summary(data)
+```
+```{r}
+class(data)
+```
+```{r}
+colSums(is.na(data))
+```
+```{r}
+sort(data[1,])
+```
+```{r}
+dimnames(data)
+```
+```{r}
+data.mat=as.matrix(data)
+data.mat
+```
+```{r}
+frame.list=as.list(data)
+frame.list
+```
+```{r}
+t(data)
+```
+```{r}
+x = c(8,6,7,5,3,0,9)
+x
+```
+```{r}
+names = c("Owen", "Luke", "Anakin", "Leia", "Jacen", "Jaina")
+names
+```
+```{r}
+heartDeck = c(rep(1,13), rep(0,39))
+heartDeck
+```
+```{r}
+y = seq(7, 41, 1.5)
+y
+```
+```{r}
+names(data)
+```
+```{r}
+s = data$X.1
+summary(s)
+```
+```{r}
+s = data$X
+summary(s)
+```
+```{r}
+s = data$basin_id.basin_name.population.jan.feb.mar.apr.may.jun.jul.aug.sep.oct.nov.dec.average.low.moderate.significant.severe
+summary(s)
+```
+```{r}
+firstTwentyIntegers = 1:20
+sum(firstTwentyIntegers)
+```
+```{r}
+die = 1:6
+manyRolls = sample(die, 100, replace=T)
+sixFreq = sum(manyRolls == 6)
+sixFreq / 100
+```
+```{r}
+monarchs = read.csv("http://www.calvin.edu/~scofield/data/comma/monarchReigns.csv")
+stem(monarchs$years)
+```
+```{r}
+```
+```{r}
+dbinom(0, 5, .5)
+```
+```{r}
+dbinom(0:5, 5, .5)
+```
+```{r}
+sum(dbinom(0:2, 5, .5))
+```
+```{r}
+pbinom(2, 5, .5)
+```
+```{r}
+flip5 = replicate(10000, sum(sample(c("H","T"), 5, rep=T)=="H"))
+table(flip5) / 10000
+```
+```{r}
+table(rbinom(10000, 5, .5)) / 10000
+```
+```{r}
+qbinom(seq(0,1,.2), 50, .2)
+```
+```{r}
+binom.test(29, 200, .21)
+```
+```{r}
+prop.test(29, 200, .21)
+```
+```{r}
+1 - pchisq(3.1309, 5)
+```
+```{r}
+pchisq(3.1309, df=5, lower.tail=F)
+```
+```{r}
+qchisq(c(.001,.005,.01,.025,.05,.95,.975,.99,.995,.999), 2)
+```
+```{r}
+qchisq(c(.999,.995,.99,.975,.95,.05,.025,.01,.005,.001), 2, lower.tail=F)
+```
+```{r}
+observedCounts = c(35, 27, 33, 40, 47, 51)
+claimedProbabilities = c(.13, .13, .14, .16, .24, .20)
+chisq.test(observedCounts, p=claimedProbabilities)
+```
+```{r}
+blood = read.csv("http://www.calvin.edu/~scofield/data/comma/blood.csv")
+t = table(blood$Rh, blood$type)
+addmargins(t)
+```
+```{r}
+addmargins(t, 1)
+```
+```{r}
+addmargins(t, 2)
+```
+```{r}
+smoke = matrix(c(51,43,22,92,28,21,68,22,9),ncol=3,byrow=TRUE)
+colnames(smoke) = c("High","Low","Middle")
+rownames(smoke) = c("current","former","never")
+smoke = as.table(smoke)
+smoke
+```
+```{r}
+summary(smoke)
+```
+```{r}
+prop.table(smoke)
+```
+```{r}
+prop.table(smoke, 1)
+```
+```{r}
+barplot(smoke,legend=T,beside=T,main='Smoking Status by SES')
+```
+```{r}
+par(mfrow = c(1,2))
+poisSamp = rpois(50, 3)
+maxX = max(poisSamp)
+hist(poisSamp, freq=F, breaks=-.5:(maxX+.5), col="green", xlab="Sampled values")
+```
+```{r}
+plot(0:maxX, dpois(0:maxX, 3), type="h", ylim=c(0,.25), col="blue", main="Probabilities for Pois(3)")
+```
+```{r}
+dpois(2:7, 4.2)
+```
+```{r}
+ppois(1, 4.2)
+```
+```{r}
+1 - ppois(7, 4.2)
+```
+```{r}
+pnorm(17, 19, 3)
+```
+```{r}
+qnorm(c(.95, .975, .995))
+```
+```{r}
+nSamp = rnorm(10000, 7, 1.5)
+hist(nSamp, freq=F, col="green", main="Sampled values and population density curve")
+```
+```{r}
+qt(c(.95, .975, .995), df=9)
+```
+```{r}
+pt(-2.1, 11)
+```
+```{r}
+data(sleep)
+t.test(extra ~ group, data=sleep)
+```
+```{r}
+sleepGrp1 = sleep$extra[sleep$group==1]
+sleepGrp2 = sleep$extra[sleep$group==2]
+t.test(sleepGrp1, sleepGrp2, conf.level=.99)
+```
+```{r}
+qqnorm(precip, ylab = "Precipitation [in/yr] for 70 US cities", pch=19, cex=.6)
+```
+```{r}
+power.t.test(n=20, delta=.1, sd=.4, sig.level=.05)
+```
+```{r}
+power.t.test(delta=.1, sd=.4, sig.level=.05, power=.8)
+```
+```{r}
+data[1]
+```
+```{r}
+length(data) 
+```
+```{r}
+data[seq(1, length(data), 2)]
+```
+```{r}
+data[-1:-6]
+```
+```{r}
+md = seq_along(data)
+md
+```
+```{r}
+as.table(as.matrix(data))
+```
+```{r}
+rpois(50, lambda = 10)
+```
+```{r}
+pbinom(c(3, 6, 9, 12), size = 17, prob = 0.5)
+```
+```{r}
+qt(0.975, df = c(5, 10, 100, Inf))
+```
+```{r}
+(1-pt(c(1.6, 1.9, 2.2), df = Inf))*2
+```
+```{r}
+pf(seq(3, 5, 0.5), df1 = 2, df2 = 12, lower.tail = F)
+```
+```{r}
+runif(10)
+```
+```{r}
+runif(10, min = 0, max = 10)
+```
+```{r}
+punif(6, min = 0, max = 10)
+```
+```{r}
+RNGkind()
+```
+```{r}
+RNGkind(kind = 'Super', normal.kind = 'Box')
+RNGkind()
+```
+```{r}
+RNGkind('default')
+RNGkind()
+
+```
+```{r}
+RNGkind('default', 'default')
+RNGkind()
+```
+```{r}
+set.seed(1)
+runif(1)
+```
+```{r}
+runif(1)
+```
+```{r}
+runif(1)
+```
+```{r}
+set.seed(1)
+runif(3)
+```
+```{r}
+set.seed(1, kind = 'Super')
+runif(3)
+```
+```{r}
+RNGkind()
+```
+```{r}
+set.seed(4)
+sample(data, size = 3)
+```
+```{r}
+set.seed(4)
+sample(data[data > 8])
+```
+```{r}
+sample(data[data > 8], size = 2, replace = T)
+```
+```{r}
+shapiro.test(rpois(100, lambda = 5))
+```
+```{r}
+count = c(9, 25, 15, 2, 14, 25, 24, 47)
+speed = c(2, 3, 5, 9, 14, 24, 29, 34)
+cor(count, speed)
+```
+```{r}
+cor(count, speed, method = 'spearman')
+```
+```{r}
+plot(0:25, rep(1, 26), pch = 0:25, cex = 2)
+```
+```{r}
+barplot(as.matrix(data))
+```
+```{r}
+stack(data)
+names(data) = c('count', 'site')
+```
+```{r}
+bfs = na.omit(stack(data))
+names(bfs) = c('count', 'site')
+names(bfs)
+```
+```{r}
+names(data)
+```
+```{r}
+palette()
+```
+```{r}
+palette(gray(seq(0.5, 1, len = 6)))
+palette()
+```
+```{r}
+palette(c('blue', 'green', 'yellow', 'pink', 'tan', 'cornsilk'))
+palette()
+```
+```{r}
+opt = par(mar = c(8, 6, 4, 2))
+par(opt)
+plot(1:10, 1:10, pch = 3, cex = 1.5)
+```
+```{r}
+plot(1:10, 1:10)
+```
+```{r}
+plot(1:10, 1:10, type = 'n')
+```
+```{r}
+split.screen(figs = c(2, 1))
+```
+```{r}
+screen()
+```
+```{r}
+close.screen()
+```
+```{r}
+readline(prompt = 'Press <enter> to continue:')
+```
+
