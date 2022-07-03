@@ -1,0 +1,527 @@
+---
+title: "LA2_EDA"
+author: "RISHIK AND HARSHITA"
+date: "`r Sys.Date()`"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+```{r}
+data = read.csv(file.choose())
+```
+```{r}
+data
+```
+```{r}
+data = read.csv(file.choose())
+```
+```{r}
+data
+```
+```{r}
+plot(data$population, data$jan)
+```
+```{r}
+plot(data$population, data$feb)
+```
+```{r}
+plot(data$population, data$mar)
+```
+```{r}
+plot(data$population, data$apr)
+```
+```{r}
+plot(data$population, data$may)
+```
+```{r}
+plot(data$population, data$jun)
+```
+```{r}
+library(ggplot2)
+```
+
+```{r}
+library(dplyr)
+```
+```{r}
+library(gcookbook)
+```
+
+```{r}
+library(ggplot2)
+ggplot(data, aes(x = population, y = jan)) +
+ geom_point()
+```
+```{r}
+library(ggplot2)
+ggplot(data, aes(x = population, y = feb)) +
+ geom_point()
+```
+```{r}
+library(ggplot2)
+ggplot(data, aes(x = population, y = mar)) +
+ geom_point()
+```
+```{r}
+library(ggplot2)
+ggplot(data, aes(x = population, y = apr)) +
+ geom_point()
+```
+```{r}
+library(ggplot2)
+ggplot(data, aes(x = population, y = may)) +
+ geom_point()
+```
+```{r}
+library(ggplot2)
+ggplot(data, aes(x = population, y = jun)) +
+ geom_point()
+```
+```{r}
+ggplot(data = NULL, aes(x = data$population, y = data$jan)) +
+ geom_point()
+```
+```{r}
+ggplot(data = NULL, aes(x = data$basin_name, y = data$population)) +
+ geom_point()
+```
+```{r}
+ggplot(data = NULL, aes(x = data$basin_name, y = data$feb)) +
+ geom_point()
+```
+```{r}
+ggplot(data = NULL, aes(x = data$population, y = data$mar)) +
+ geom_point()
+```
+```{r}
+ggplot(data = NULL, aes(x = data$population, y = data$apr)) +
+ geom_point()
+```
+```{r}
+ggplot(data = NULL, aes(x = data$population, y = data$may)) +
+ geom_point()
+```
+```{r}
+ggplot(data = NULL, aes(x = data$population, y = data$jun)) +
+ geom_point()
+```
+```{r}
+ggplot(data = NULL, aes(x = data$basin_name, y = data$jun)) +
+ geom_point()
+```
+```{r}
+plot(data$population, data$jan, type = "l")
+```
+```{r}
+plot(data$population, data$feb, type = "l")
+```
+```{r}
+plot(data$population, data$mar, type = "l")
+```
+```{r}
+plot(data$population, data$apr, type = "l")
+```
+```{r}
+plot(data$population, data$may, type = "l")
+```
+```{r}
+plot(data$population, data$jun, type = "l")
+```
+```{r}
+plot(data$population, data$jan, type = "l")
+points(data$population, data$jan)
+```
+```{r}
+plot(data$population, data$feb, type = "l")
+points(data$population, data$feb)
+```
+```{r}
+plot(data$population, data$mar, type = "l")
+points(data$population, data$mar)
+```
+```{r}
+plot(data$population, data$apr, type = "l")
+points(data$population, data$apr)
+```
+```{r}
+plot(data$population, data$may, type = "l")
+points(data$population, data$may)
+```
+```{r}
+plot(data$population, data$jun, type = "l")
+points(data$population, data$jun)
+```
+```{r}
+plot(data$jan, data$feb, type = "l")
+points(data$jan, data$feb)
+lines(data$jan, data$feb/2, col = "red")
+points(data$jan, data$feb/2, col = "red")
+```
+```{r}
+plot(data$mar, data$apr, type = "l")
+points(data$mar, data$apr)
+lines(data$mar, data$apr/2, col = "red")
+points(data$mar, data$apr/2, col = "red")
+```
+```{r}
+plot(data$may, data$jun, type = "l")
+points(data$may, data$jun)
+lines(data$may, data$jun/2, col = "red")
+points(data$may, data$jun/2, col = "red")
+```
+```{r}
+barplot(data$population, names.arg = data$jan)
+```
+```{r}
+barplot(data$population, names.arg = data$basin_name)
+```
+```{r}
+barplot(data$feb, names.arg = data$basin_name)
+```
+```{r}
+barplot(data$may, names.arg = data$jun)
+```
+```{r}
+barplot(data$jun, names.arg = data$basin_name)
+```
+```{r}
+barplot(table(data$population))
+```
+```{r}
+barplot(table(data$jan))
+```
+```{r}
+barplot(table(data$basin_name))
+```
+```{r}
+library(ggplot2)
+ggplot(data, aes(x = population, y = basin_name)) +
+ geom_col()
+```
+```{r}
+library(ggplot2)
+ggplot(data, aes(x = factor(population), y = factor(basin_name))) +
+ geom_col()
+```
+```{r}
+library(ggplot2)
+ggplot(data, aes(x = jan, y = feb)) +
+ geom_col()
+```
+```{r}
+library(ggplot2)
+ggplot(data, aes(x = mar, y = basin_name)) +
+ geom_col()
+```
+```{r}
+library(ggplot2)
+ggplot(data, aes(x = may, y = jun)) +
+ geom_col()
+```
+```{r}
+hist(data$population)
+```
+```{r}
+hist(data$jan)
+```
+```{r}
+hist(data$feb)
+```
+```{r}
+hist(data$mar)
+```
+```{r}
+hist(data$mar, breaks = 10)
+```
+```{r}
+hist(data$population, breaks = 10)
+```
+```{r}
+library(ggplot2)
+ggplot(data, aes(x = population)) +
+ geom_histogram()
+```
+```{r}
+library(ggplot2)
+ggplot(data, aes(x = jan)) +
+ geom_histogram()
+```
+```{r}
+library(ggplot2)
+ggplot(data, aes(x = feb)) +
+ geom_histogram()
+```
+```{r}
+ggplot(data, aes(x = jan)) +
+ geom_histogram(binwidth = 5)
+```
+```{r}
+ggplot(data, aes(x = population)) +
+ geom_histogram(binwidth = 7)
+```
+```{r}
+boxplot(len ~ supp + dose, data = ToothGrowth)
+```
+```{r}
+boxplot(len ~ supp, data = ToothGrowth)
+```
+```{r}
+library(ggplot2)
+ggplot(ToothGrowth, aes(x = supp, y = len)) +
+ geom_boxplot()
+```
+```{r}
+ggplot(ToothGrowth, aes(x = interaction(supp, dose), y = len)) +
+ geom_boxplot()
+```
+```{r}
+curve(x^3 - 5*x, from = -4, to = 4)
+```
+```{r}
+myfun <- function(xvar) {
+ 1 / (1 + exp(-xvar + 10))
+}
+curve(myfun(x), from = 0, to = 20)
+```
+```{r}
+curve(1 - myfun(x), add = TRUE, col = "red")
+```
+```{r}
+ggplot(data.frame(x = c(0, 20)), aes(x = x)) +
+ stat_function(fun = myfun, geom = "line")
+```
+```{r}
+ggplot(pg_mean, aes(x = group, y = weight)) +
+ geom_col()
+```
+```{r}
+ggplot(pg_mean, aes(x = group, y = weight)) +
+ geom_col(fill = "lightblue", colour = "black")
+```
+```{r}
+ggplot(cabbage_exp, aes(x = Date, y = Weight, fill = Cultivar)) +
+ geom_col(position = "dodge")
+```
+```{r}
+ggplot(diamonds, aes(x = cut)) +
+ geom_bar()
+```
+```{r}
+ggplot(data, aes(x = population, y = jan, fill = feb)) +
+ geom_col(position = "identity")
+```
+```{r}
+ggplot(cabbage_exp, aes(x = interaction(Date, Cultivar), y = Weight)) +
+ geom_col() +
+ geom_text(aes(label = Weight), vjust = 1.5, colour = "white")
+```
+```{r}
+ggplot(data, aes(x = population, y = jan)) +
+ geom_point()
+```
+```{r}
+ggplot(worldpop, aes(x = Year, y = Population)) +
+ geom_line() +
+ geom_point() +
+ scale_y_log10()
+```
+```{r}
+ggplot(tg, aes(x = dose, y = length, colour = supp)) +
+ geom_line()
+```
+```{r}
+ggplot(tg, aes(x = dose, y = length, linetype = supp)) +
+ geom_line()
+```
+```{r}
+ggplot(tg, aes(x = factor(dose), y = length, colour = supp, group = supp)) +
+ geom_line()
+```
+```{r}
+ggplot(tg, aes(x = dose, y = length, fill = supp)) +
+ geom_line() +
+ geom_point(size = 4, shape = 21)
+```
+```{r}
+ggplot(BOD, aes(x = Time, y = demand)) +
+ geom_line(linetype = "dashed", size = 1, colour = "blue")
+```
+```{r}
+sunspotyear <- data.frame(
+ Year = as.numeric(time(sunspot.year)),
+ Sunspots = as.numeric(sunspot.year)
+ )
+ggplot(sunspotyear, aes(x = Year, y = Sunspots)) +
+ geom_area()
+```
+```{r}
+ggplot(uspopage, aes(x = Year, y = Thousands, fill = AgeGroup)) +
+ geom_area()
+```
+```{r}
+ggplot(uspopage, aes(x = Year, y = Thousands, fill = AgeGroup)) +
+ geom_area(colour = "black", size = .2, alpha = .4) +
+ scale_fill_brewer(palette = "Blues")
+```
+```{r}
+ggplot(data, aes(x = population, y = jan)) +
+geom_ribbon(aes(ymin = feb - mar,
+ ymax = feb + mar),
+ alpha = 0.2) +
+geom_line()
+```
+```{r}
+ggplot(heightweight, aes(x = ageYear, y = heightIn)) +
+ geom_point()
+```
+```{r}
+ggplot(heightweight, aes(x = ageYear, y = heightIn)) +
+ geom_point(size = 1.5)
+```
+```{r}
+ggplot(heightweight, aes(x = ageYear, y = heightIn)) +
+ geom_point(shape = 3)
+```
+```{r}
+ggplot(heightweight, aes(x = ageYear, y = heightIn, shape = sex)) +
+ geom_point(size = 3) +
+ scale_shape_manual(values = c(1, 4))
+```
+```{r}
+library(dplyr)
+hw <- heightweight %>%
+ mutate(weightgroup = ifelse(weightLb < 100, "< 100", ">= 100"))
+ggplot(hw, aes(x = ageYear, y = heightIn, shape = sex, fill = weightgroup)) +
+ geom_point(size = 2.5) +
+ scale_shape_manual(values = c(21, 24)) +
+ scale_fill_manual(
+ values = c(NA, "black"),
+ guide = guide_legend(override.aes = list(shape = 21))
+ )
+```
+```{r}
+ggplot(heightweight, aes(x = ageYear, y = heightIn, size = weightLb)) +
+ geom_point()
+```
+```{r}
+diamonds_sp <- ggplot(diamonds, aes(x = carat, y = price))
+diamonds_sp +
+ geom_point()
+```
+```{r}
+diamonds_sp +
+ geom_point(alpha = .01)
+```
+```{r}
+cw_sp <- ggplot(ChickWeight, aes(x = Time, y = weight))
+cw_sp +
+ geom_point()
+```
+```{r}
+cw_sp +
+ geom_boxplot(aes(group = Time))
+```
+```{r}
+hw_sp <- ggplot(heightweight, aes(x = ageYear, y = heightIn))
+hw_sp +
+ geom_point(colour = "grey60") +
+ stat_smooth(method = lm, se = FALSE, colour = "black")
+```
+```{r}
+library(MASS)
+biopsy_mod <- biopsy %>%
+ mutate(classn = recode(class, benign = 0, malignant = 1))
+ggplot(biopsy_mod, aes(x = V1, y = classn)) +
+ geom_point(
+ position = position_jitter(width = 0.3, height = 0.06),
+ alpha = 0.4,
+ shape = 21,
+ size = 1.5
+ ) +
+ stat_smooth(method = glm, method.args = list(family = binomial))
+```
+```{r}
+hw_sp <- ggplot(heightweight, aes(x = ageYear, y = heightIn, colour = sex)) +
+ geom_point() +
+ scale_colour_brewer(palette = "Set1")
+hw_sp +
+ geom_smooth()
+hw_sp +
+ geom_smooth(method = lm, se = FALSE, fullrange = TRUE)
+```
+```{r}
+library(gcookbook)
+countrylist <- c("Canada", "Ireland", "United Kingdom", "United States",
+ "New Zealand", "Iceland", "Japan", "Luxembourg", "Netherlands", "Switzerland")
+cdat <- countries %>%
+ filter(Year == 2009, Name %in% countrylist)
+cdat_sp <- ggplot(cdat, aes(x = healthexp, y = infmortality, size = GDP)) +
+ geom_point(shape = 21, colour = "black", fill = "cornsilk")
+cdat_sp
+cdat_sp +
+ scale_size_area(max_size = 15)
+```
+```{r}
+ggplot(faithful, aes(x = waiting)) +
+ geom_density()
+ggplot(faithful, aes(x = waiting)) +
+ geom_line(stat = "density") +
+ expand_limits(y = 0)
+```
+```{r}
+ggplot(faithful, aes(x = waiting, y = ..density..)) +
+ geom_histogram(fill = "cornsilk", colour = "grey60", size = .2) +
+ geom_density() +
+ xlim(35, 105)
+```
+```{r}
+hw_p <- ggplot(heightweight, aes(x = sex, y = heightIn))
+hw_p +
+ geom_violin()
+```
+```{r}
+library(gcookbook)
+library(dplyr)
+c2009 <- countries %>%
+ filter(Year == 2009 & healthexp > 2000)
+c2009_p <- ggplot(c2009, aes(x = infmortality))
+c2009_p +
+ geom_dotplot()
+c2009_p +
+ geom_dotplot(binwidth = .25) +
+ geom_rug() +
+ scale_y_continuous(breaks = NULL) +
+ theme(axis.title.y = element_blank())
+```
+```{r}
+faithful_p <- ggplot(faithful, aes(x = eruptions, y = waiting))
+faithful_p +
+ geom_point() +
+ stat_density2d()
+faithful_p +
+ stat_density2d(aes(colour = ..level..))
+```
+GITHUB LINK TO ALL THE COMMANDS
+
